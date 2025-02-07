@@ -1,5 +1,10 @@
 
-# DSCOVR:EPIC Image Viewer
+# DSCOVR:EPIC Image Viewer (Weather and Clock)
+
+This is a fork from Matt Gray's excellent NASA Epic image viewer.  This adds the current weather for your location and a clock to the display.
+
+you will need an api key from http://openweathermap.org (register for an account)  this key then needs placing in the api_key = "<api key>" section under main loop
+Change the location to the location and country you are in.
 
 This script looks for new [images from the Earth Polychromatic Imaging Camera](https://epic.gsfc.nasa.gov/) on NASA's [Deep Space Climate Observatory](https://www.nesdis.noaa.gov/current-satellite-missions/currently-flying/dscovr-deep-space-climate-observatory) satellite, and displays them on screen.
 
@@ -17,18 +22,22 @@ I've been fiddling with this for over a year now, so I've never followed these i
 ## Raspberry Pi Setup
 I'll assume you've already followed Pimoroni's instructions for getting the Hyperpixel Round screen going.
 
-1. Use the terminal or log in as pi via ssh.
-1. Create the directory `mkdir ~pi/code/epic/`
-1. Go into the directory `cd ~pi/code/epic/`
-1. Copy the code from this repository in
-	* `git clone https://github.com/MattGrayYes/epic.git .`
-1. make sure `start-epic.sh` is executable (`chmod +x start-epic.sh`)
-1. Copy the autostart file `cp epic.desktop ~pi/.config/autostart/`
-1. Install any python requirements `pip3 install -r requirements.txt`
-1. Test you can run it `./start-epic.sh`
+1. Use the terminal or log in as your username via ssh.
+2. Create the directory `mkdir -p /root/code/epic/`
+3. Go into the directory `cd /root/code/epic/`
+4. Copy the code from this repository in
+	* `git clone https://github.com/timgrahame/epic/epic.git .`
+5. make sure `start-epic.sh` is executable (`chmod +x start-epic.sh`)
+6. Copy the epic.service file to /etc/systemd/system
+7. enable the service: systemctl enable epic
+8. Install any python requirements `pip3 install -r requirements.txt`
+9. Copy the epic.service file to /etc/systemd/system
+10. enable the service: systemctl enable epic
+11. Start the service: systemctl start epic
+12. Test you can run it `./start-epic.sh`
 	* If that doesn't work, test you can run it directly `python3 -u epic.py`
 	* If it still doesn't work check the output for errors, and google them.
-1. If the test works, kill it with CTRL+C
-1. Reboot and hope it runs automatically `sudo reboot`
+13. If the test works, kill it with CTRL+C
+14. Reboot and hope it runs automatically `sudo reboot`
 
 
