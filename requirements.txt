@@ -1,2 +1,2 @@
-pygame==1.9.4.post1
+pygame==1.9.4
 requests==2.21.0
